@@ -4,6 +4,7 @@
 
 The Employee Management System is a web-based application designed to streamline the management of employee accounts within an organization. 
 It provides a comprehensive set of features for creating, editing, and deleting user accounts, along with advanced role management capabilities to control access and permissions.
+For a quick overview, I have provided a screenshot of the project on the overview.zip file. 
 
 ## Key Objectives
 
