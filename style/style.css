@@ -1,0 +1,2083 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #2a2185;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 50px; /* Adjusted padding to make space for the icon */
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 50%; /* Adjusted position to vertically center the icon */
+  transform: translateY(-50%); /* Center the icon vertically */
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3.5rem;
+  color: var(--black2);
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+/* ================== Order Details List ============== */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  font-weight: 600;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+.status.delivered {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.pending {
+  padding: 2px 4px;
+  background: #e9b10a;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.inProgress {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.recentCustomers {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+.recentCustomers .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.recentCustomers .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recentCustomers table tr td {
+  padding: 12px 10px;
+}
+.recentCustomers table tr td h4 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2rem;
+}
+.recentCustomers table tr td h4 span {
+  font-size: 14px;
+  color: var(--black2);
+}
+.recentCustomers table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.recentCustomers table tr:hover td h4 span {
+  color: var(--white);
+}
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+
+.user-list {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  select, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .select-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .action-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .action-links a {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  .action-links a:hover {
+    text-decoration: underline;
+  }
+  
+  input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    table {
+      font-size: 14px;
+    }
+  
+    th, td {
+      padding: 8px;
+    }
+  
+    input[type="text"], select {
+      padding: 8px;
+    }
+  
+    input[type="submit"] {
+      padding: 6px 14px;
+    }
+  }
+  
+  .add-user-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .add-user-form h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .add-user-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-user-form input[type="text"],
+  .add-user-form input[type="email"],
+  .add-user-form input[type="password"],
+  .add-user-form select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-user-form select {
+    padding: 10px;
+  }
+  
+  .add-user-form .form-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-user-form .form-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .permissions {
+    margin-bottom: 15px;
+}
+
+.permissions label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.permissions input[type="checkbox"],
+.permissions span {
+    vertical-align: middle;
+}
+
+.permissions input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+  
+  .content2 {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .content2 h3 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .content2 h3 span {
+    background: crimson;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+  
+  .content2 h1 {
+    font-size: 36px;
+    margin-top: 10px;
+    color: #444;
+  }
+  
+  .content2 h1 span {
+    color: #007bff;
+  }
+  
+  .content2 p {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #666;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .content2 {
+      padding: 30px;
+    }
+  
+    .content2 h3 {
+      font-size: 20px;
+    }
+  
+    .content2 h1 {
+      font-size: 28px;
+    }
+  
+    .content2 p {
+      font-size: 16px;
+    }
+  }
+  
+  .add-product-form {
+    width: 100%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.add-product-form h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.add-product-form label {
+    font-weight: normal;
+}
+
+.add-product-form input[type="text"],
+.add-product-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.add-product-form .checkbox-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.add-product-form .checkbox-label {
+    margin-right: 5px;
+}
+
+.add-product-form input[type="checkbox"] {
+    margin: 0;
+}
+
+.add-product-form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-product-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.add-product-form p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ff0000;
+}
+
+.add-product-form p.success-message {
+    color: #00a000;
+}
+
+
+/* Success message */
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px; /* Adjust spacing as needed */
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px; /* Adjust spacing as needed */
+}
+
+.add-product-form2 {
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.add-product-form2 h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.add-product-form2 label {
+  font-weight: normal;
+}
+
+.add-product-form2 input[type="text"],
+.add-product-form2 input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.add-product-form2 .checkbox-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.add-product-form2 .checkbox-label {
+  margin-right: 5px;
+}
+
+.add-product-form2 input[type="checkbox"] {
+  margin: 0;
+}
+
+.add-product-form2 input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-product-form2 input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.add-product-form2 p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ff0000;
+}
+
+.add-product-form2 p.success-message {
+  color: #00a000;
+}
+
+/* Add this to your CSS styles */
+.permission-section {
+  display: none;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.permission-section.show {
+  display: block;
+}
+
+/* Styling for the buttons */
+.form2-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form2-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Adding some margin to the buttons for spacing */
+.form2-btn {
+  margin-right: 5px;
+}
+
+/* Styling for the delete button */
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Styling for the details button */
+.details-btn {
+  background-color: #28a745;
+}
+
+.details-btn:hover {
+  background-color: #218838;
+}
+
+/* Style for the button */
+#showAddRoleForm {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style for the button when hovered */
+#showAddRoleForm:hover {
+  background-color: #2980b9;
+}
+
+/* Styling for the buttons */
+.details-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Adding some margin to the buttons for spacing */
+.details-btn {
+  margin-right: 5px;
+}
+
+
+/* Styling for the buttons */
+.edit-user-btn {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-user-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Adding some margin to the buttons for spacing */
+.edit-user-btn {
+  margin-right: 5px;
+}
+
+/* Add this to your existing CSS file or create a new one */
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Edit user form styles */
+.edit-user-form {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+}
+
+.edit-user-form h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.edit-user-form input[type="text"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="password"],
+.edit-user-form input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-user-form input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+.user-details {
+  text-align: left;
+  padding-left: 10px; /* Add some left padding for spacing */
+}
+
+/* styles.css */
+.add-user-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.add-user-button:hover {
+  background-color: #2980b9;
+}
+
+/* styles.css */
+.edit-btn,
+.delete-btn {
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: px;
+    margin-right: 5px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the edit product form */
+.edit-product-form {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-product-form h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.edit-product-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.edit-product-form input[type="text"],
+.edit-product-form input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.edit-product-form .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edit-product-form .checkbox-container label {
+  margin-bottom: 0;
+  margin-left: 5px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.edit-product-form .form-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-product-form .form-btn:hover {
+  background-color: #0056b3;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container label {
+  margin-right: 10px;
+}
+
+/* Add this to your CSS stylesheet */
+a {
+  text-decoration: none; /* Remove underlines from links */
+  color: inherit; /* Use the default text color for links */
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for Edit and Delete buttons */
+.edit-btn,
+.delete-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px; /* Add this line */
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    background-color: #2980b9;
+}
+
+.access-permissions {
+  margin-top: 20px;
+}
+
+.access-permissions label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.access-permissions table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.access-permissions th,
+.access-permissions td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.form-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.form-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Styles for User Details Page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container2 {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* Additional Styles as Needed */
+/* Styling for the Delete button */
+.edit-user-btn2 {
+  padding: 10px 20px;
+  background-color: #dc3545; /* Red color for Delete button */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 80px; /* Set a fixed width for the button */
+  display: inline-block;
+  text-align: middle;
+
+}
+
+.edit-user-btn2:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+
+/* Adding some margin to the button for spacing */
+.edit-user-btn2 {
+  margin-right: -20px;
+}
+
+/* Styling for the Details, Edit, and Delete buttons */
+.details-btn,
+.edit-user-btn,
+.edit-user-btn2,
+.form2-btn,
+.form-btn {
+  padding: 6px 12px; /* Adjust padding for a more compact look */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 14px; /* Set a consistent font size for the buttons */
+  width: auto; /* Reset width to auto for all buttons */
+}
+
+.details-btn:hover,
+.edit-user-btn:hover,
+.edit-user-btn2:hover,
+.form2-btn:hover,
+.form-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Adding some margin to the buttons for spacing */
+.details-btn,
+.edit-user-btn,
+.edit-user-btn2,
+.form2-btn,
+.form-btn {
+  margin-right: 5px;
+}
+
+/* Styling for the Delete button */
+.edit-user-btn3 {
+  padding: 8px 16px;
+  background-color: #dc3545; /* Red color for delete */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 8px; /* Adjust font size as needed */
+  transition: background-color 0.3s ease;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.edit-user-btn3:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+
+/* Adding some margin to the button for spacing */
+.edit-user-btn3 {
+  margin-right: -10px;
+}
+
+.edit-user-form {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.edit-form-row {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.edit-form-row label {
+  flex: 1;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.edit-form-row input[type="text"],
+.edit-form-row input[type="email"],
+.edit-form-row input[type="password"] {
+  flex: 2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-form-row input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styling for the Assign Roles section */
+.assign-roles-section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+.assign-roles-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.assign-roles-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.assign-roles-form input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.assign-roles-form input[type="submit"] {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.assign-roles-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Apply these styles to disabled checkboxes */
+input[type="checkbox"]:disabled {
+  opacity: 0.5; /* Reduced opacity for disabled checkboxes */
+  cursor: not-allowed; /* Change cursor to indicate unavailability */
+}
+
+.access-permissions {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.access-permissions table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.access-permissions th,
+.access-permissions td {
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.access-permissions th {
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+.access-permissions td input[type="checkbox"] {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.access-permissions td input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-user-button-container {
+  margin-bottom: 10px;
+}
+
+.add-user-button {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.add-user-button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the role list container */
+.role-list {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Form element styles */
+select, input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Select wrapper styles */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Select icon styles */
+.select-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Action links styles */
+.action-links {
+  display: flex;
+  align-items: center;
+}
+
+.action-links a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.action-links a:hover {
+  text-decoration: underline;
+}
+
+/* Submit button styles */
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  input[type="text"], select {
+    padding: 8px;
+  }
+
+  input[type="submit"] {
+    padding: 6px 14px;
+  }
+}
+
+.action-links {
+  display: flex;
+  align-items: center;
+}
+
+.action-links a {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.action-links a:hover {
+  background-color: #0056b3;
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the user list container */
+.user-list {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+.user-list h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Table styles */
+.user-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-list th, .user-list td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-list th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Action links styles */
+.user-list .action-links {
+  display: flex;
+  align-items: center;
+}
+
+.user-list .action-links a {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.user-list .action-links a:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .user-list table {
+    font-size: 14px;
+  }
+
+  .user-list th, .user-list td {
+    padding: 8px;
+  }
+}
+
+/* Styles for the submenu */
+.submenu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: #7b0000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.show {
+  display: block;
+}
+
+.submenu li {
+  padding: 10px;
+}
+
+/* Add your other navigation styles here */
+
+/* Styles for submenu icon */
+.submenu-icon {
+  margin-left: auto;
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.has-submenu.show .submenu-icon {
+  transform: rotate(180deg);
+}
+
+/* Add your other navigation styles here */
+
+/* Add indentation to the admin profile and password links */
+.nav-list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-list li {
+  margin-bottom: 5px;
+}
+
+.nav-list li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-list li a .icon {
+  margin-right: 5px;
+}
+
+.nav-list li.indent {
+  margin-left: 15px; /* Adjust the value as needed */
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style for the main container */
+.main2 {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the content inside the main container */
+.content {
+  font-family: Arial, sans-serif;
+}
+
+.content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.content td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+}
+
+/* Style for alternating table rows */
+.content tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.content tr:hover {
+  background-color: #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+th[colspan="3"] {
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-buttons button {
+  padding: 6px 12px;
+  margin: 2px;
+}
+
+.edit-user-btn3,
+.edit-user-btn {
+    padding: 6px; /* Adjust padding to fit text within the button */
+    margin: 2px;
+    width: 80px; /* Adjust width as needed */
+    text-align: center;
+    overflow: hidden; /* Hide any overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Show ellipsis (...) if text overflows */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 100%; /* Position the dropdown below the user image */
+  right: 0; /* Align the dropdown with the right edge of the user image */
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Add this to your existing CSS or create a new CSS file */
+@media screen and (max-width: 768px) {
+  .container {
+      flex-direction: column;
+  }
+
+  .navigation {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      
+      background-color: #2a2185;
+      z-index: 1001;
+  }
+
+  .active-navigation {
+      transform: translateX(0);
+  }
+
+  .nav-list {
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+  }
+
+  .nav-list.active-list {
+    max-height: 100%;
+    overflow: hidden; /* Hide the vertical scrollbar */
+    overscroll-behavior-y: contain; /* Prevent scroll bouncing */
+  }
+  
+  
+  .nav-list.active-list li {
+      opacity: 1;
+  }
+      
+
+  .toggle {
+      display: block;
+  }
+
+
+
+  .search,
+  .user-dropdown {
+      display: none;
+  }
+
+  .dropdown-content {
+      position: static;
+      display: block;
+  }
+
+  .hidden {
+      display: none;
+  }
+
+  
+}
+
+/* Style for the form container */
+.form-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Style for error messages */
+.error-msg {
+  display: block;
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+/* Style for form inputs */
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style for the submit button */
+.form-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  background-color: #0056b3;
+}
+
+.indent {
+  padding-left: 20px; /* Adjust this value as needed */
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.actions-cell {
+  width: 100px;
+  text-align: center;
+}
+
+.edit-button, .delete-button {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  display: block;
+  margin: 5px auto;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover, .delete-button:hover {
+  background-color: #0056b3;
+}
+
+.content2 {
+  padding: 50px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content2 h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.content2 span {
+  color: #ff9900;
+}
+
+.content2 h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center; /* Center the "Welcome admin" part */
+}
+
+.content2 p {
+  font-size: 18px;
+  color: #666;
+}
+
+.edit-button, .delete-btn {
+  font-size: 14px; /* Adjust the font size as needed */
+}
+
+/* Add a fixed height and set overflow-y to auto */
+#navigation-container {
+  height: 100%; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+/* Hide the scrollbar in webkit-based browsers */
+#navigation-container::-webkit-scrollbar {
+  width: 0.5em; /* Adjust as needed */
+}
+
+/* Track */
+#navigation-container::-webkit-scrollbar-track {
+  background: transparent; /* Make the track transparent */
+}
+
+/* Handle */
+#navigation-container::-webkit-scrollbar-thumb {
+  background: transparent; /* Make the scrollbar handle transparent */
+}        
